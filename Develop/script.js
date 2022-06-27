@@ -24,8 +24,28 @@ function colorCode (){
     });
 }
 
-colorCode()
+colorCode();
 
+var saveButtonEl = $(".saveBtn");
+console.log(saveButtonEl)
 
+saveButtonEl.on('click', function(){
+    let text = $(this).parent().parent().find("#timeChange").val();
+    let key = $(this).parent().parent().find(".hour").text();
+    text.value = localStorage.getItem   
+    localStorage.setItem(key,text);
+    console.log(text)
 
+})
 
+function populateData(){
+    timeRows.each(function(){
+        let rowMoment =$(this).text()
+        console.log(rowMoment)
+        let content = localStorage.getItem(rowMoment);
+        if (content != null ){
+            $(this).parent().parent().find("#timeChange").val(content) 
+        }
+    })
+}
+populateData()
